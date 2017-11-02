@@ -27,12 +27,12 @@ To leverage the Swift-cfenv package in your Swift application, you should specif
 
      ...
 
-     dependencies: [
-         .Package(url: "https://github.com/IBM-Swift/Swift-cfenv.git", majorVersion: 3),
+    dependencies: [
+        .package(url: "https://github.com/IBM-Swift/Swift-cfenv.git", .upToNextMajor(from: "5.0.0")),
+        .package(url: "https://github.com/IBM-Swift/Configuration.git", .upToNextMajor(from: "2.0.0"))
+    ]
 
-         ...
-
-     ])
+    ...
  ```
 
  Once the Package.swift file of your application has been updated accordingly, you can import the `CloudFoundryEnv` and `Configuration` modules in your code:
@@ -150,21 +150,21 @@ Service is a class that contains the following properties for a Cloud Foundry [s
 - `tags`: An array of strings that contains values to identify a service instance.
 - `credentials`: An optional dictionary that contains the service credentials required to access the service instance. Note that the credential properties for accessing a service could be completely different from one to another. For instance, the credentials dictionary for a service may simply contain a `uri` property while the credentials dictionary for another service may contain a `hostname`, `username`, and `password` properties.
 
-## Testing with Bluemix
-To test this Swift library on Bluemix, you can follow the steps described in this section which use the Bluemix [command line](https://console.ng.bluemix.net/docs/cli/reference/bluemix_cli/index.html#getting-started).
+## Testing on the IBM Cloud
+To test this Swift library on the IBM Cloud, you can follow the steps described in this section which use the IBM Cloud [command line](https://console.ng.bluemix.net/docs/cli/reference/bluemix_cli/index.html#getting-started).
 
 Create a dummy service named `cf-dummy-service`:
 
 `bx service user-provided-create cf-dummy-service -p "url, username, password, database"`
 
-The Bluemix command line will then prompt you for the following (please enter some reasonable values):
+The IBM Cloud command line will then prompt you for the following (please enter some reasonable values):
 
     url> http://swift-cfenv-service.test.com
     username> username00
     password> password00
     database> CloudantDB
 
-Once the dummy service is created, you can clone Bluemix's [swift-helloworld](https://github.com/IBM-Bluemix/swift-helloworld) application using the following command:
+Once the dummy service is created, you can clone IBM Cloud's [swift-helloworld](https://github.com/IBM-Bluemix/swift-helloworld) application using the following command:
 
 `git clone https://github.com/IBM-Bluemix/swift-helloworld.git`
 
